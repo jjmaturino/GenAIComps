@@ -60,6 +60,16 @@ services:
       vllm-gaudi-server:
         condition: service_healthy
 
+  docsum-predictionguard:
+    extends: docsum
+    container_name: docsum-predictionguard
+    environment:
+      DocSum_COMPONENT_NAME: ${LLM_COMPONENT_NAME:-OpeaDocSumPredictionguard}
+      PREDICTIONGUARD_API_KEY: ${PREDICTIONGUARD_API_KEY}
+
+
+
+
 networks:
   default:
     driver: bridge
